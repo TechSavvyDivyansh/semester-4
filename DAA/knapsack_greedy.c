@@ -47,34 +47,37 @@ void knapsack()
     int position=0;float value,selectedWeight;
 
     
-
+    //Main Logic of knapsack greedy
     int weightCount=m;
-        for(int i=0;i<n;i++)
-        {
-                value=sortedPByW[i];
-                for(int j=0;j<n;j++)
+    for(int i=0;i<n;i++)
+    {
+            value=sortedPByW[i];
+            for(int j=0;j<n;j++)
+            {
+                if(value==PByW[j])
                 {
-                    if(value==PByW[j])
-                    {
-                        position=j;
-                        selectedWeight=weight[j];
-                    }
+                    position=j;
+                    selectedWeight=weight[j];
                 }
+            }
 
-                if(weight[position]<weightCount)
-                {
-                    finalAr[position]=1;
-                }
-                else if(weightCount==0 || weightCount<0)
-                {
-                    finalAr[position]=0;
-                }
-                else
-                {
-                    finalAr[position]=weightCount/weight[position];
-                }
-                weightCount-=weight[position];
-        }
+            if(weight[position]<weightCount)
+            {
+                finalAr[position]=1;
+            }
+            else if(weightCount==0 || weightCount<0)
+            {
+                finalAr[position]=0;
+            }
+            else
+            {
+                finalAr[position]=weightCount/weight[position];
+            }
+            weightCount-=weight[position];
+    }
+
+
+    
 }
 
 
