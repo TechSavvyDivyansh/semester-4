@@ -1,40 +1,10 @@
 #include<stdio.h>
 
 
-float nutrition[10],weight[10];float PByW[10],sortedPByW[10],finalAr[10];
-void main()
+float nutrition[10],weight[10];float PByW[10],sortedPByW[10],finalAr[10];int m,n;
+
+void knapsack()
 {
-    int m,n;
-    printf("Enter the maximum weight your bag can hold:");
-    scanf("%d",&m);
-    printf("Enter number of fruits you can see in oasis:");
-    scanf("%d",&n);
-
-
-    for(int i=0;i<n;i++)
-    {
-        printf("---Fruit %d---\n",(i+1));
-        printf("Nutrition of fruit:");
-        scanf("%f",&nutrition[i]);
-        printf("Weight of fruit:");
-        scanf("%f",&weight[i]);
-        PByW[i]=nutrition[i]/weight[i];
-    }
-    for(int i=0;i<n;i++)
-    {
-        printf("---Fruit %d---\n",(i+1));
-        printf("Nutrition:%f\n",nutrition[i]);
-        printf("Weight:%f\n",weight[i]);
-        printf("Pi/Wi:%f\n",PByW[i]);
-    }
-
-
-
-    for(int i=0;i<n;i++)
-    {
-        finalAr[i]=0;
-    }
-
     float test;int j;
     // sortedByW initialization
     for(int i=0;i<n;i++)
@@ -43,14 +13,15 @@ void main()
     }
 
     
-
-    printf("\nPBYW:\n");
+    // PRINTING PROFIT/WEIGHT for each item
+    printf("\n\nPBYW:");
     for(int i=0;i<n;i++)
     {
         printf("%f ",PByW[i]);
     }
 
-    // sorting PByW
+
+    // sorting PByW  [INSERTION SORT]->ANY KIND OF SORTING CAN BE USED
     for(int i=1;i<n;i++)
     {
         test=sortedPByW[i];
@@ -64,12 +35,13 @@ void main()
     }
 
 
-
-    printf("\nsorted PBYW:\n");
+    // Printing Profit by weight after sorting 
+    printf("\nsorted PBYW:");
     for(int i=0;i<n;i++)
     {
         printf("%f ",sortedPByW[i]);
     }
+    printf("\n");
 
     // find position of max value
     int position=0;float value,selectedWeight;
@@ -103,20 +75,48 @@ void main()
                 }
                 weightCount-=weight[position];
         }
+}
+
+
+void main()
+{
+    
+    printf("\nEnter the maximum weight your bag can hold 👜:");
+    scanf("%d",&m);
+    printf("Enter number of fruits you can see in oasis🍒:");
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++)
+    {
+        printf("\n---🍎 Fruit %d---\n",(i+1));
+        printf("💪 Enter Nutrition of fruit:");
+        scanf("%f",&nutrition[i]);
+        printf("🏋️ Enter Weight of fruit:");
+        scanf("%f",&weight[i]);
+        PByW[i]=nutrition[i]/weight[i];
+        printf("Profit💰/Weight🏋️ :%f\n",PByW[i]);
         
+    }
+    
+
+    
+    knapsack(); 
 
 
-    printf("\n final array");
+    // printing final array that contains fractional values to be accepted
+    printf("\n\nfinal array:");
     for(int i=0;i<n;i++)
     {
         printf("%f ",finalAr[i]);
     }
 
+
+    // Calculating final nutrition
     float Finalnutrition=0;
     for(int i=0;i<n;i++)
     {
         Finalnutrition+=finalAr[i]*nutrition[i];
     }
-    printf("\nFinal nutrition:%f",Finalnutrition); 
-    
+
+    printf("\nMaximum Nutrition 🍒💪 that can be taken in bag 👜 of weight %d units is: %f\n\n",m,Finalnutrition); 
 }
