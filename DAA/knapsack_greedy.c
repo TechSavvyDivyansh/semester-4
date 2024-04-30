@@ -5,7 +5,6 @@ float nutrition[10],weight[10];float PByW[10],sortedPByW[10],finalAr[10];int m,n
 
 void knapsack()
 {
-    float test;int j;
     // sortedByW initialization
     for(int i=0;i<n;i++)
     {
@@ -22,6 +21,7 @@ void knapsack()
 
 
     // sorting PByW  [INSERTION SORT]->ANY KIND OF SORTING CAN BE USED
+    float test;int j;
     for(int i=1;i<n;i++)
     {
         test=sortedPByW[i];
@@ -77,7 +77,7 @@ void knapsack()
     }
 
 
-    
+
 }
 
 
