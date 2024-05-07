@@ -1,9 +1,7 @@
 
 frames=int(input("Enter number of frames:"))
-# frames=3
 
 n=int(input("Enter the number of processes:"))
-# n=14
 pageReq=[]
 
 for i in range(n):
