@@ -51,7 +51,7 @@ void RabinKarp(int d,int q)
             printf("\np:%d",p);
             printf("\nbefore adding q:%d",t);
             if (t < 0)                            //we need to ensure that the value remains within the range [0, q-1], where q is the modulus. However, due to the modulus operation, t might become negative in some cases.This is used to correct that error
-            t = (t + q);    
+                t = (t + q);    
             printf("\nafter:%d",t);
         }
 
