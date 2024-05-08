@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int map[6][6]={
+int map[100][100]={
     {0,7,9,0,0,4},
     {7,0,10,15,0,0},
     {9,10,0,11,0,2},
@@ -9,7 +9,7 @@ int map[6][6]={
     {4,0,2,0,9,0},
 };
 
-int dist[6],parent[6],visited[6]={0,0,0,0,0,0},source=0;
+int dist[100],parent[100],visited[100]={0,0,0,0,0,0},source=0,n=6;
 
 int extract_min()
 {
@@ -32,7 +32,7 @@ int extract_min()
 
 void initialize_Single_Soure()
 {
-    for(int i=0;i<6;i++)
+    for(int i=0;i<n;i++)
     {
         dist[i]=99999;
         parent[i]=-1;
@@ -54,11 +54,11 @@ void Dijkstra()
 {
     initialize_Single_Soure();
 
-    for(int i=0;i<6;i++)
+    for(int i=0;i<n;i++)
     {
         int U=extract_min();
 
-        for(int j=0;j<6;j++)
+        for(int j=0;j<n;j++)
         {
             if(map[U][j]!=0 && visited[j] != 1)
             {
@@ -75,13 +75,13 @@ void main()
     Dijkstra();
     printf("Distance :\n");
 
-    for(int i=0;i<6;i++)
+    for(int i=0;i<n;i++)
     {
         printf("%d ",dist[i]);
     }
 
     printf("parent:\n");
-    for(int i=0;i<6;i++)
+    for(int i=0;i<n;i++)
     {
         printf("%d ",parent[i]+1);
     }
