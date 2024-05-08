@@ -11,7 +11,7 @@ int map[8][8]={
 };
 
 int n=7;
-int dist[50],parent[50],visited[50]={0,0,0,0,0,0},source=0,c=0;
+int dist[50],parent[50],source=0,c=0;
 
 
 
