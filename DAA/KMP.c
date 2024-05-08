@@ -49,7 +49,7 @@ void KMP()
             printf("Pattern occurs shift: %d",i-m+1);
             q=pie[q-1];
         }
-        printf("\nq:%d",q);
+        // printf("\nq:%d",q);
 
     }
 
