@@ -153,7 +153,6 @@ void optimal()
                     int c=0,ci=0;
                     for(int j=i+1;j<n;j++)
                     {
-                        // printf("j:%d \n",j);
                         if(pageTable[k]==pageReq[j])
                         {
                             c=1;
@@ -172,12 +171,12 @@ void optimal()
                     }
                 }
 
-                printf("optimal track:");
-                for(int k=0;k<frames;k++)
-                {
-                    printf("%d ",optimalTrack[k]);
-                }
-                printf("\n");
+                // printf("optimal track:");
+                // for(int k=0;k<frames;k++)
+                // {
+                //     printf("%d ",optimalTrack[k]);
+                // }
+                // printf("\n");
                 
                 int max=-1,maxi=0;
                 for(int k=0;k<frames;k++)
