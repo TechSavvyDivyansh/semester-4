@@ -128,6 +128,8 @@ void optimal()
         printf("%d  ->",pageReq[i]);
 
         int flag=0;
+        
+        //to check for hit 
         for(int k=0;k<frames;k++)
         {
             if(pageReq[i]==pageTable[k])
@@ -137,14 +139,19 @@ void optimal()
                 break;
             }
         }
+
+        // to check for miss
         if(flag!=1)
         {
+            // initially when pagetable is not filled completely
             if(count<frames)
             {
                 pageTable[count]=pageReq[i];
                 count++;
                 miss++;
             }
+
+            // pagetable filled completely page is not added but replaced
             else
             {
                 int optimalTrack[50];
@@ -177,7 +184,8 @@ void optimal()
                 //     printf("%d ",optimalTrack[k]);
                 // }
                 // printf("\n");
-                
+
+                // replacing element in pagetable with maximum distance
                 int max=-1,maxi=0;
                 for(int k=0;k<frames;k++)
                 {
