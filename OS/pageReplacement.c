@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int frames=3,pageReq[50]={6,0,12,0,30,4,2,30,32,1,20,15},n=12;
+int frames=3,pageReq[50]={6,0,12,0,30,4,12,6,0,4,12,0},n=12;
 
 void fifo()
 {
@@ -109,21 +109,108 @@ void lru()
         
         
 }
-
-    
+   
 
 
 
 
 void optimal()
 {
+    
+    int pageTable[50],hit=0,miss=0,count=0;
+    for(int i=0;i<frames;i++)
+    {
+        pageTable[i]=-1;
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        printf("%d  ->",pageReq[i]);
+
+        int flag=0;
+        for(int k=0;k<frames;k++)
+        {
+            if(pageReq[i]==pageTable[k])
+            {
+                hit++;
+                flag=1;
+                break;
+            }
+        }
+        if(flag!=1)
+        {
+            if(count<frames)
+            {
+                pageTable[count]=pageReq[i];
+                count++;
+                miss++;
+            }
+            else
+            {
+                int optimalTrack[50];
+                for(int k=0;k<frames;k++)
+                {
+                    int c=0,ci=0;
+                    for(int j=i+1;j<n;j++)
+                    {
+                        // printf("j:%d \n",j);
+                        if(pageTable[k]==pageReq[j])
+                        {
+                            c=1;
+                            ci=j;
+                            break;
+                        }
+
+                    }
+                    if(c==1)
+                    {
+                        optimalTrack[k]=ci;
+                    }
+                    else
+                    {
+                        optimalTrack[k]=9999;
+                    }
+                }
+
+                printf("optimal track:");
+                for(int k=0;k<frames;k++)
+                {
+                    printf("%d ",optimalTrack[k]);
+                }
+                printf("\n");
+                
+                int max=-1,maxi=0;
+                for(int k=0;k<frames;k++)
+                {
+                    if(optimalTrack[k]>max)
+                    {
+                        max=optimalTrack[k];
+                        maxi=k;
+                    }
+                }
+                pageTable[maxi]=pageReq[i];
+                miss++;
+            }
+        }
+
+        for(int k=0;k<frames;k++)
+        {
+            printf("%d ",pageTable[k]);
+        }
+        printf("  hit:%d miss:%d",hit,miss);
+        printf("\n");
+        printf("\n");
+    }
+
 
 }
+
 
 
 void main()
 {
     // fifo();
     // lru();
+    optimal();
     
 }
