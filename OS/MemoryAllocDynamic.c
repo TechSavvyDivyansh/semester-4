@@ -4,15 +4,21 @@ int process[50]={450,417,112,290,90},memory[50]={110,500,600,300,200},n=5,m=5;
 
 void firstFit()
 {   
-    int visited[50]={0},allocated[50]={0};float totalAllocMem=0,totalMem=0;
+    int remainingMemory[50]={0},allocated[50]={0};float totalAllocMem=0,totalMem=0;
+
+    for(int i=0;i<m;i++)
+    {
+        remainingMemory[i]=memory[i];
+    }
+
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<m;j++)
         {
-            if(process[i]<=memory[j] && visited[j]!=1)
+            if(process[i]<=remainingMemory[j] && remainingMemory[j]!=0)
             {
-                allocated[j]=process[i];
-                visited[j]=1;
+                allocated[j]+=process[i];
+                remainingMemory[j]-=process[i];
                 break;
             }
         }
@@ -30,15 +36,22 @@ void firstFit()
 
 void nextFit()
 {   
-    int visited[50]={0},allocated[50]={0},c=-1,j=0;float totalAllocMem=0,totalMem=0;
+    int remainingMemory[50]={0},allocated[50]={0},c=-1,j=0;float totalAllocMem=0,totalMem=0;
+
+    for(int i=0;i<m;i++)
+    {
+        remainingMemory[i]=memory[i];
+    }
+
+
     for(int i=0;i<n;i++)
     {
         while(j!=c)
         {
-            if(process[i]<=memory[j] && visited[j]!=1)
+            if(process[i]<=remainingMemory[j] && remainingMemory[j]!=0)
             {
-                allocated[j]=process[i];
-                visited[j]=1;
+                allocated[j]+=process[i];
+                remainingMemory[j]-=process[i];
                 c=j;
                 j=(j+1)%m;
                 break;
@@ -62,8 +75,13 @@ void nextFit()
 
 void bestFit()
 {
-    int visited[50]={0},allocated[50]={0},min,temp;
+    int remainingMemory[50]={0},allocated[50]={0},min,temp;
     float totalAllocMem=0,totalMem=0;
+
+    for(int i=0;i<m;i++)
+    {
+        remainingMemory[i]=memory[i];
+    }
 
 
     for(int i=0;i<n;i++)
@@ -71,14 +89,14 @@ void bestFit()
         min=99999,temp=-1;
         for(int j=0;j<m;j++)
         {            
-            if(process[i]<=memory[j] && visited[j]!=1 && memory[j]<min)
+            if(process[i]<=remainingMemory[j] && remainingMemory[j]!=0 && remainingMemory[j]<min)
             {
-                min=memory[j];
+                min=remainingMemory[j];
                 temp=j;
             }
         }
-        allocated[temp]=process[i];
-        visited[temp]=1;
+        allocated[temp]+=process[i];
+        remainingMemory[temp]-=process[i];
     }
 
     for(int i=0;i<m;i++)
@@ -94,23 +112,27 @@ void bestFit()
 
 void worstFit()
 {
-    int visited[50]={0},allocated[50]={0},max,temp;
+    int remainingMemory[50]={0},allocated[50]={0},max,temp;
     float totalAllocMem=0,totalMem=0;
 
+    for(int i=0;i<m;i++)
+    {
+        remainingMemory[i]=memory[i];
+    }
 
     for(int i=0;i<n;i++)
     {
         max=0,temp=-1;
         for(int j=0;j<m;j++)
         {            
-            if(process[i]<=memory[j] && visited[j]!=1 && memory[j]>max)
+            if(process[i]<=remainingMemory[j] && remainingMemory[j]!=0 && remainingMemory[j]>max)
             {
-                max=memory[j];
+                max=remainingMemory[j];
                 temp=j;
             }
         }
-        allocated[temp]=process[i];
-        visited[temp]=1;
+        allocated[temp]+=process[i];
+        remainingMemory[temp]-=process[i];
     }
 
     for(int i=0;i<m;i++)
@@ -127,11 +149,11 @@ void worstFit()
 void main()
 {
     printf("first Fit:\n");
-    firstFit();
-    printf("best Fit:\n");
-    bestFit();
-    printf("worst Fit:\n");
+    // firstFit();
+    // printf("best Fit:\n");
+    // bestFit();
+    // printf("worst Fit:\n");
     worstFit();
-    printf("next Fit:\n");
-    nextFit();
+    // printf("next Fit:\n");
+    // nextFit();
 }
