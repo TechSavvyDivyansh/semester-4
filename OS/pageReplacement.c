@@ -46,10 +46,10 @@ void fifo()
 
 }
 
-int findLRU(int time[], int n) {
+int findLRU(int time[], int frames) {
     int minimum = time[0], pos = 0;
 
-    for (int i = 1; i < n; ++i) {
+    for (int i = 1; i < frames; ++i) {
         if (time[i] < minimum) {
             minimum = time[i];
             pos = i;
