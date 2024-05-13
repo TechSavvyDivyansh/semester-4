@@ -10,6 +10,7 @@ pageReq=[4,7,3,0,1,7,3,8,5,4,5,3,4,7]
 # print(pageReq)
 
 
+#fifo
 def fifo():
     hit=0
     miss=0
@@ -62,7 +63,6 @@ def optimal():
     count=0
 
     
-    # print(f"hit:{hit} miss:{miss}")
     for i in range(n):
         
         if(pageReq[i] in PageTable):
