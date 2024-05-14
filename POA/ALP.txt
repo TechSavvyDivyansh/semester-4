@@ -16,23 +16,24 @@ ASSUME CS:CODE,DS:DATA                      ;This is for Assembler ,DS segment D
 START    : MOV AX,DATA
            MOV DS,AX
            MOV CH,04H                       ;i loop. Last one need not be compared as it already gets on the correct position
-		   UP2: MOV CL,04H                  ;j loop. Last one need not be compared as it already gets on the correct position
-		        LEA SI,STRING1
- 
-		   UP1: MOV AL,[SI]                 ;SI ka address me jo value hain wo AL
-		        MOV BL,[SI+1]
-		        CMP AL,BL
-		        JC DOWN                     ;99,12(99>12) no jump
-		
-		   MOV DL,[SI+1]  ;DS*10+SI+1
-		   XCHG [SI],DL
-		   MOV [SI+1],DL
- 
-		   DOWN: INC SI
-			     DEC CL
-			     JNZ UP1
-			     DEC CH
-		         JNZ UP2
+	   
+	   UP2: MOV CL,04H                  ;j loop. Last one need not be compared as it already gets on the correct position
+		LEA SI,STRING1
+
+	   UP1: MOV AL,[SI]                 ;SI ka address me jo value hain wo AL
+		MOV BL,[SI+1]
+		CMP AL,BL
+		JC DOWN                     ;99,12(99>12) no jump
+	
+	   MOV DL,[SI+1]  ;DS*10+SI+1
+	   XCHG [SI],DL
+	   MOV [SI+1],DL
+
+	   DOWN: INC SI
+		     DEC CL
+		     JNZ UP1
+		     DEC CH
+		 JNZ UP2
  
 CODE ENDS
 END START
@@ -54,27 +55,27 @@ CODE SEGMENT
 
 ASSUME CS:CODE,DS:DATA
 start    : MOV AX,DATA
-		   MOV DS,AX
+	   MOV DS,AX
 
-		   MOV CH,04H
+	   MOV CH,04H
 
-		   UP2: MOV CL,04H
-		   LEA SI,STRING1
+	   UP2: MOV CL,04H
+	   LEA SI,STRING1
 
-		   UP1: MOV AL,[SI]
-			    MOV BL,[SI+1]
-			    CMP AL,BL
-			    JNC DOWN
-			    
-			    MOV DL,[SI+1]
-			    XCHG [SI],DL
-			    MOV [SI+1],DL
+	   UP1: MOV AL,[SI]
+	        MOV BL,[SI+1]
+	        CMP AL,BL
+	        JNC DOWN
+	    
+	    MOV DL,[SI+1]
+	    XCHG [SI],DL
+	    MOV [SI+1],DL
 
-			DOWN: INC SI
-				  DEC CL
-				  JNZ UP1
-				  DEC CH
-				  JNZ UP2
+	     DOWN: INC SI
+		   DEC CL
+		   JNZ UP1
+		   DEC CH
+		   JNZ UP2
 
 CODE ENDS
 END START
@@ -87,11 +88,11 @@ END START
 ; multi-segment executable file template
 
 data segment
-	seg1 db 1h ,2h ,3h
+    seg1 db 1h ,2h ,3h
 ends
 
 extra segment
-	seg2 db ?
+    seg2 db ?
 ends
 
 code segment
@@ -106,7 +107,7 @@ start:
 	lea di , seg2 
 	mov cx, 03h                     ;for loop for 3 values
 	transfer: mov ah,ds:[si]               ;its like index number as we do in array 
-	mov es:[di],ah
+		  mov es:[di],ah
 
 	inc si
 	inc di
@@ -136,9 +137,9 @@ sort macro
 	     CMP AL,BL
 	     JC DOWN
 
-	     MOV DL,[SI+1]
-	     XCHG [SI],DL
-	     MOV [SI+1],DL
+	MOV DL,[SI+1]
+	XCHG [SI],DL
+	MOV [SI+1],DL
 	 
 	DOWN: INC SI
 	      DEC CL
@@ -180,32 +181,32 @@ DATA ENDS
 CODE SEGMENT
 		ASSUME DS:DATA CS:CODE
 		START:
-		MOV AX,DATA
-		MOV DS,AX
+			MOV AX,DATA
+			MOV DS,AX
 
-		LEA SI,ARR
-		MOV AL,ARR[SI] ;indexing
-		MOV MIN,AL
-		MOV MAX,AL
-
-		MOV CX,LEN
-		REPEAT:
-		MOV AL,ARR[SI]
-		CMP MIN,AL
-		JL CHECKMAX   ;if Value in AL is not lower than Min jump.
-
-		MOV MIN,AL
-		CHECKMAX:
-		CMP MAX,AL
-		JG DONE        ;if value in AL is not greater that max jump
-
-		MOV MAX,AL
-		DONE:
-		INC SI
-		LOOP REPEAT
-
-		MOV AH,4CH  ;code for 
-		INT 21H
+			LEA SI,ARR
+			MOV AL,ARR[SI] ;indexing
+			MOV MIN,AL
+			MOV MAX,AL
+	
+			MOV CX,LEN
+			REPEAT:
+				MOV AL,ARR[SI]
+				CMP MIN,AL
+				JL CHECKMAX   ;if Value in AL is not lower than Min jump.
+	
+			MOV MIN,AL
+			CHECKMAX:
+				CMP MAX,AL
+				JG DONE        ;if value in AL is not greater that max jump
+	
+			MOV MAX,AL
+			DONE:
+				INC SI
+				LOOP REPEAT
+	
+			MOV AH,4CH  ;code for 
+			INT 21H
 CODE ENDS
 END START
 
@@ -242,12 +243,14 @@ START:
       MOV DS,AX
       MOV AH,00
       MOV AL,NUM
+
  L1:  DEC NUM
-      MUL NUM   ;mul num with AL
+      MUL NUM            ;mul num with AL
       MOV CL,NUM
       CMP CL,01
       JNZ L1
       MOV fact, AL 
+
 CODE ENDS
 END START
 
@@ -276,13 +279,13 @@ ends
 
 code segment
     start:
-    mov ax,data
-    mov ds,ax
-    mov cx,num
-    
-    mov ax, 0001h
-    fact num
-    mov result,ax
+	    mov ax,data
+	    mov ds,ax
+	    mov cx,num
+	    
+	    mov ax, 0001h
+	    fact num
+	    mov result,ax
 ends
 
 
@@ -300,21 +303,21 @@ code segment
     assume cs:code, ds:data
     start: 
    
-    mov ax,data
-    mov ds,ax
-    lea DX,MSG                
-    MOV AH,09h
-    INT 21H
-    
-    mov ah,01
-    int 21h 
-        
-    mov dl,al
-    mov ah,02
-    int 21h 
-    
-    mov ah,4ch
-    int 21h
+	    mov ax,data
+	    mov ds,ax
+	    lea DX,MSG                
+	    MOV AH,09h
+	    INT 21H
+	    
+	    mov ah,01
+	    int 21h 
+	        
+	    mov dl,al
+	    mov ah,02
+	    int 21h 
+	    
+	    mov ah,4ch
+	    int 21h
     code ends
 end start
 
