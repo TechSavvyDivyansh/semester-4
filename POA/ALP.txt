@@ -30,9 +30,9 @@ START    : MOV AX,DATA
 	   MOV [SI+1],DL
 
 	   DOWN: INC SI
-		     DEC CL
-		     JNZ UP1
-		     DEC CH
+		 DEC CL
+		 JNZ UP1
+		 DEC CH
 		 JNZ UP2
  
 CODE ENDS
