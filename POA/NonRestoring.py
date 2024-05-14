@@ -1,22 +1,16 @@
-# Divyansh Modi-60004220034
-def DecToBin(n,bitsize):
-    binaryString=bin(n)[2:]
-    binaryList=[]
-    binaryList.extend(int(bit) for bit in binaryString)
-    if(bitsize==4):
-        replacedBin=[0,0,0,0]
-        i=0
-        for j in range(len(binaryList)-1,-1,-1):
-            replacedBin[i]=binaryList[j]
-            i+=1
-    else:
-        replacedBin=[0,0,0,0,0]
-        i=0
-        for j in range(len(binaryList)-1,-1,-1):
-            replacedBin[i]=binaryList[j]
-            i+=1
+def DecToBin(n, bitsize):
+    replacedBin=[]
+    for i in range(bitsize):
+        replacedBin.append(n%2)
+        n//=2
     return replacedBin[::-1]
 
+
+
+def BinaryToDec(A,Q):
+    quotient=int(''.join(map(str,Q)),2)
+    remainder=int(''.join(map(str,A)),2)
+    return remainder,quotient
 
 
 
@@ -32,6 +26,7 @@ def add(A,M):
             carry=0
             sum.append(temp)
     return sum[::-1]
+
         
 def comp(Mu):
     #Always Create a copy of the input list Mu
@@ -50,6 +45,10 @@ def shiftLeft(A,Q):
     Q=Q[1:]
     Q.append('n')
     return A,Q
+
+
+
+
 
 def non_restore(A,Q,M,n):
     print("---------------NON_RESTORING START----------------")
@@ -87,10 +86,7 @@ def non_restore(A,Q,M,n):
     print(f'Quotient:{quotient} and remainder is:{remainder}')
     
         
-def BinaryToDec(A,Q):
-    quotient=int(''.join(map(str,Q)),2)
-    remainder=int(''.join(map(str,A)),2)
-    return remainder,quotient
+
 
 
 

@@ -1,22 +1,17 @@
-# Divyansh Modi-60004220034
-def DecToBin(n,bitsize):
-    binaryString=bin(n)[2:]
-    binaryList=[]
-    binaryList.extend(int(bit) for bit in binaryString)
-    if(bitsize==4):
-        replacedBin=[0,0,0,0]
-        i=0
-        for j in range(len(binaryList)-1,-1,-1):
-            replacedBin[i]=binaryList[j]
-            i+=1
-    else:
-        replacedBin=[0,0,0,0,0]
-        i=0
-        for j in range(len(binaryList)-1,-1,-1):
-            replacedBin[i]=binaryList[j]
-            i+=1
+
+def DecToBin(n, bitsize):
+    replacedBin=[]
+    for i in range(bitsize):
+        replacedBin.append(n%2)
+        n//=2
     return replacedBin[::-1]
 
+
+def BinaryToDec(A,Q):
+    quotient=int(''.join(map(str,Q)),2)     #''.join(map(st,Q)) converts each Q to string and concats them. int(1100,2),here 1100 is now string  ,2 converts to decimal
+
+    remainder=int(''.join(map(str,A)),2)
+    return remainder,quotient
 
 
 
@@ -32,6 +27,8 @@ def add(A,M):
             carry=0
             sum.append(temp)
     return sum[::-1]
+
+
         
 def comp(Mu):
     #Always Create a copy of the input list Mu
@@ -44,6 +41,7 @@ def comp(Mu):
     return add(Mu_copy, [0, 0, 0, 0, 1])
 
 
+
 def shiftLeft(A,Q):
     A=A[1:]
     A.append(Q[0])
@@ -51,16 +49,20 @@ def shiftLeft(A,Q):
     Q.append('n')
     return A,Q
 
+
+
 def restore(A,Q,M,n):
     print("---------------RESTORING START----------------")
     Main=M[:]
     compl=comp(M)[:]
+    
     while(n!=0):
 
         print(f"!!n={n}\n")
         A,Q=shiftLeft(A,Q)
         print(f'After Shift Left=> A:{A},Q:{Q}')
         A=add(A,compl)
+
         print(f'After A-M=> A:{A},Q:{Q}')
         if(A[0]==1):
             Q[3]=0
@@ -76,11 +78,6 @@ def restore(A,Q,M,n):
     print(f'Quotient:{quotient} and remainder is:{remainder}')
     
         
-def BinaryToDec(A,Q):
-    quotient=int(''.join(map(str,Q)),2)
-    remainder=int(''.join(map(str,A)),2)
-    return remainder,quotient
-
 
 
 
@@ -93,3 +90,6 @@ A=[0,0,0,0,0]
 n=len(Q)
 restore(A,Q,M,n)
 
+
+# DecToBin(13,4)
+# DecToBin(5,5)
