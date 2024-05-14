@@ -1,3 +1,7 @@
+NOTE💣 :Don't add indentation in code . I have added just for understanding 
+
+
+
 ;Bubble sort 
 ;ACSENDING
 
