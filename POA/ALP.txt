@@ -16,7 +16,6 @@ ASSUME CS:CODE,DS:DATA                      ;This is for Assembler ,DS segment D
 START    : MOV AX,DATA
            MOV DS,AX
            MOV CH,04H                       ;i loop. Last one need not be compared as it already gets on the correct position
- 
 		   UP2: MOV CL,04H                  ;j loop. Last one need not be compared as it already gets on the correct position
 		        LEA SI,STRING1
  
