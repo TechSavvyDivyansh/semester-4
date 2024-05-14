@@ -25,9 +25,9 @@ START    : MOV AX,DATA
 		CMP AL,BL
 		JC DOWN                     ;99,12(99>12) no jump
 	
-	   MOV DL,[SI+1]  ;DS*10+SI+1
-	   XCHG [SI],DL
-	   MOV [SI+1],DL
+		MOV DL,[SI+1]  ;DS*10+SI+1
+		XCHG [SI],DL
+		MOV [SI+1],DL
 
 	   DOWN: INC SI
 		 DEC CL
@@ -67,9 +67,9 @@ start    : MOV AX,DATA
 	        CMP AL,BL
 	        JNC DOWN
 	    
-	    MOV DL,[SI+1]
-	    XCHG [SI],DL
-	    MOV [SI+1],DL
+	        MOV DL,[SI+1]
+	        XCHG [SI],DL
+	        MOV [SI+1],DL
 
 	     DOWN: INC SI
 		   DEC CL
