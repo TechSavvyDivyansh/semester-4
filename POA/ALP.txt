@@ -205,7 +205,7 @@ CODE SEGMENT
 				INC SI
 				LOOP REPEAT
 	
-			MOV AH,4CH  ;code for 
+			MOV AH,4CH  ;code for generating interrupt
 			INT 21H
 CODE ENDS
 END START
