@@ -157,8 +157,8 @@ CODE SEGMENT
 
 	ASSUME CS:CODE,DS:DATA
 	START: MOV AX,DATA
-	MOV DS,AX
-	sort 
+	       MOV DS,AX
+	       sort 
 
 CODE ENDS
 
