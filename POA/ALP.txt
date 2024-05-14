@@ -137,9 +137,9 @@ sort macro
 	     CMP AL,BL
 	     JC DOWN
 
-	MOV DL,[SI+1]
-	XCHG [SI],DL
-	MOV [SI+1],DL
+	     MOV DL,[SI+1]
+	     XCHG [SI],DL
+	     MOV [SI+1],DL
 	 
 	DOWN: INC SI
 	      DEC CL
