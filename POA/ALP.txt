@@ -262,10 +262,9 @@ END START
 ;FACTORIAL USING MACRO
 
 fact macro f
-    up:
-    mul f
-    dec f
-    jnz up
+    up:mul f
+       dec f
+       jnz up
 endm
 
 data segment
