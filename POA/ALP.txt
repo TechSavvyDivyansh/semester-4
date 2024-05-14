@@ -195,12 +195,12 @@ CODE SEGMENT
 				CMP MIN,AL
 				JL CHECKMAX   ;if Value in AL is not lower than Min jump.
 	
-			MOV MIN,AL
+				MOV MIN,AL
 			CHECKMAX:
 				CMP MAX,AL
 				JG DONE        ;if value in AL is not greater that max jump
 	
-			MOV MAX,AL
+				MOV MAX,AL
 			DONE:
 				INC SI
 				LOOP REPEAT
