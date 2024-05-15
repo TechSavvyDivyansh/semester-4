@@ -19,7 +19,7 @@ def DecToBin(n, qval):
 
 
 def BinaryToDec(A,Q):
-    quotient=int(''.join(map(str,Q)),2)     #converts each bit of Q to string and concats them. finally (,2) converts binary string to decimal
+    quotient=int(''.join(map(str,Q)),2)     
     remainder=int(''.join(map(str,A)),2)
     return remainder,quotient
 
