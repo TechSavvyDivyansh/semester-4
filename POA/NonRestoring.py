@@ -19,7 +19,7 @@ def DecToBin(n, qval):
 
 
 def BinaryToDec(A,Q):
-    quotient=int(''.join(map(str,Q)),2)
+    quotient=int(''.join(map(str,Q)),2)     #converts each bit of Q to string and concats them. finally (,2) converts binary string to decimal
     remainder=int(''.join(map(str,A)),2)
     return remainder,quotient
 
@@ -94,7 +94,7 @@ def non_restore(A,Q,M,n):
         A=add(A,M)
 
 
-        
+
     print(f'\n Quotient is:{Q} and remainder is:{A}')
     remainder,quotient=BinaryToDec(A,Q)
     print(f'Quotient:{quotient} and remainder is:{remainder}')
