@@ -246,7 +246,7 @@ START:
       MOV AL,01h
 
  L1:  MUL NUM            ;mul num with AL
-	  DEC NUM
+      DEC NUM
       JNZ L1
 
 	MOV fact, AL 
