@@ -213,6 +213,7 @@ END START
 
 
 
+
 ;ADD
 
 MOV AX,[1000h]
@@ -242,14 +243,13 @@ START:
       MOV AX,DATA
       MOV DS,AX
       MOV AH,00
-      MOV AL,NUM
+      MOV AL,01h
 
- L1:  DEC NUM
-      MUL NUM            ;mul num with AL
-      MOV CL,NUM
-      CMP CL,01
+ L1:  MUL NUM            ;mul num with AL
+	  DEC NUM
       JNZ L1
-      MOV fact, AL 
+
+	MOV fact, AL 
 
 CODE ENDS
 END START
@@ -270,10 +270,6 @@ endm
 data segment
     num dw 05h
     result dw ?
-ends
-
-stack segment
-    dw 128 dup(0)
 ends
 
 code segment
@@ -322,3 +318,37 @@ end start
 
 
 
+
+
+;AVERAGE
+
+DATA SEGMENT
+	ARR DB 01H,05H,02H,05H 
+	SUM DB ?
+	AVG DW ?
+DATA ENDS
+
+CODE SEGMENT
+ASSUME CS:CODE,DS:DATA 
+
+START:MOV AX,DATA 
+	  MOV DS,AX
+
+	  LEA SI,ARR
+	  MOV AL,00H                                        ;iTS LIKE INITIALIZING SUM TO 0 
+	  MOV CL,04H                                        ;TO BE USED AS TERMINATING CONDITION
+	  MOV CH,04H	                                    ;TOTAL COUNT OF NUMBERS TO BE DIVIDED 
+
+	  SUMLOOP:MOV DL,ARR[SI]
+	  		  ADD AL,DL 
+			  INC SI 
+			  DEC CL 
+			  JNZ SUMLOOP 
+
+	  MOV SUM,AL 
+	  MOV AH,00H 				;TO CONVERT DIVIDEND TO 16 BIT 
+	  DIV CH                    ;DIV CAN ALWAYS BE PERFORMED ON 16 BIT BY 8 BIT . 2 16 BIT OR 2 8 BIT CAN'T BE DIVIDED
+	  MOV AVG,AX 
+
+CODE ENDS 
+END START  
