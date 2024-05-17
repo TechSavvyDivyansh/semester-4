@@ -208,3 +208,9 @@ body
     height: auto;
     transform: translateY(0px);
 }
+
+
+video
+{
+    width: 80vw;
+}
