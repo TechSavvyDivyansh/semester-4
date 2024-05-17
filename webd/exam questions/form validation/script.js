@@ -21,7 +21,6 @@ let countdownInterval = setInterval(() => {
 
 
 
-
 // after load display
 let email=document.getElementById("email")
 let emailPattern=/[a-zA-Z1-3]\w+@(gmail|yahoo|outlook).com/
