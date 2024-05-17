@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="loader" id="loader">
+        <div class="loadtext">
+            <p>LOADING.........</p>
+            <p id="timer"></p>
+        </div>
+        <div class="spinner"></div>
+        .
+    </div>
+
+
+    <div class="" id="afterLoadDisplay">
+        <form class="form">
+            <div class="">
+                <input type="text" name="" id="name" placeholder="name">
+                <p class="error" id="nameError"></p>
+                <p class="success" id="nameSuccess"></p>
+            </div>
+            <div class="">
+                <input type="text" name="" id="username" placeholder="username">
+            </div>
+            <div class="">
+                <input type="text" name="" id="email" placeholder="email">
+                <div class="message">
+                    <p class="error" id="emailError"></p>
+                    <p class="success" id="emailSuccess"></p>
+                </div>
+            </div>
+            <div class="">
+                <input type="password" name="" id="password" placeholder="password">
+                <p class="error" id="passError"></p>
+                <p class="success" id="passSuccess"></p>
+            </div>
+            <div class="">
+                <input type="password" name="" id="confirmPassword" placeholder="confirm password">
+                <p class="error" id="CPassError"></p>
+                <p class="success" id="CPassSuccess"></p>
+            </div>
+            <div class="checkboxSection">
+                <div class="checkbox">
+                    <label for="cb">MUSTANG</label>
+                    <input type="checkbox" name="cb" id="">
+                </div>
+                <div class="checkbox">
+                    <label for="cb">Ferrari</label>
+                    <input type="checkbox" name="cb" id="">
+                </div>
+                <div class="checkbox">
+                    <label for="cb">Tata</label>
+                    <input type="checkbox" name="cb" id="">
+                </div>
+                <div class="checkbox">
+                    <label for="cb">Mahindra</label>
+                    <input type="checkbox" name="cb" id="">
+                </div>
+            </div>
+        </form>
+
+        <button class="bgchanger">CHANGE BG</button>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

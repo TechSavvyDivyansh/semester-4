@@ -1,0 +1,168 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: rgb(236, 232, 232);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#afterLoadDisplay
+{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadtext
+{
+    text-align: center;
+    z-index: 10;
+}
+
+#timer
+{
+    font-size: 50px;
+}
+
+
+.spinner
+{
+    width: 520px;
+    height: 520px;
+    position: absolute;
+    background:linear-gradient(red,rgb(249, 247, 247));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 1s infinite;
+}
+
+@keyframes spin 
+{
+    0%
+    {
+        transform: rotateZ(0deg);
+    }
+    100%
+    {
+        transform: rotateZ(360deg);
+    }
+}
+
+.spinner::after
+{
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: rgb(236, 232, 232);
+}
+
+
+
+
+
+
+
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    align-items: center;
+}
+
+.form div
+{
+    width: 100%;
+}
+
+
+.form div input
+{
+    width: 100%;
+    padding: 18px;
+    margin: 5px;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.form input:focus
+{
+    outline: none;
+}
+
+.form input::placeholder
+{
+    color: black;
+}
+
+.message
+{
+    transition: 0.5s ease-in-out;
+}
+
+.error
+{
+    color: red;
+    margin-left: 20px;
+}
+
+.success
+{
+    color: green;
+    margin-left: 20px;
+}
+
+
+.checkboxSection
+{
+    display: flex;
+    padding: 15px;
+}
+
+.checkbox
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.bgchanger
+{
+    padding: 20px;
+    color: red;
+    border:1px solid red;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 50px;
+}
+
+.bgchanger:hover
+{
+    background-color: red;
+    color: white;
+}
