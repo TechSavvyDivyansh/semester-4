@@ -113,3 +113,17 @@ bgChanger.addEventListener("click",()=>{
             document.body.style.color="black"
       }
 })
+
+
+
+// accordion
+
+let title=document.querySelectorAll(".title")
+let desc=document.querySelectorAll(".desc")
+
+title.forEach((item,index)=>{
+    item.addEventListener("click",()=>{                                                                             
+        desc[index].classList.toggle("toggle")
+    })
+})
+
